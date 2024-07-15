@@ -22,11 +22,11 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GHCR_IO }}
       - name: Build Docker Image
-        run: docker build -t ghcr.io/${{ github.repository }}:latest .
+        run: docker build -t ${{ env.REGISTRY }}/${{ github.repository }}:latest .
       - name: Push Docker Image
-        run: docker push ghcr.io/${{ github.repository }}:latest
+        run: docker push ${{ env.REGISTRY }}/${{ github.repository }}:latest
 
 #  run:
 #    runs-on: ubuntu-latest
