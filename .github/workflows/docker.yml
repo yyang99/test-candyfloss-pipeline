@@ -32,6 +32,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_IO }}
       - name: Pull Docker Image
         run: docker pull ${{ env.REGISTRY }}/${{ github.repository }}:latest
       - name: Run Docker Image
