@@ -1,0 +1,146 @@
+{
+  "match": {
+    "or": [
+      {
+        "jsonpath": "$.telemetry_data.encoding_path",
+        "value": "Cisco-IOS-XR-platforms-ofa-oper:ofa/stats/nodes/node/Cisco-IOS-XR-8000-platforms-npu-resources-oper:hw-resources-datas/hw-resources-data"
+      },
+      {
+        "jsonpath": "$.telemetry_data.encoding_path",
+        "value": "Cisco-IOS-XR-platforms-ofa-oper:ofa/stats/nodes/node/Cisco-IOS-XR-NCS-BDplatforms-npu-resources-oper:hw-resources-datas/hw-resources-data"
+      }
+    ]
+  },
+  "transform": [
+    {
+      "operation": "modify-default-beta",
+      "spec": {
+        "telemetry_data": {
+          "data_json": {
+            "*": {
+              "content": {
+                "npu-hwr": {
+                  "*": {
+                    "bank": {
+                      "*": {
+                        "lt-hwr": {
+                          "[0]": {
+                            "fake": "fake"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "operation": "shift",
+      "spec": {
+        "*": "&",
+        "telemetry_data": {
+          "*": "telemetry_data.&",
+          "data_json": {
+            "*": {
+              "*": "telemetry_data.data_json.[&1].&",
+              "keys": {
+                "*": {
+                  "*": "telemetry_data.data_json.[&3].&"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "operation": "shift",
+      "spec": {
+        "telemetry_data": {
+          "data_json": {
+            "*": {
+              "content": {
+                "npu-hwr": {
+                  "*": {
+                    "bank": {
+                      "*": {
+                        "lt-hwr": {
+                          "*": {
+                            "@(10,event_type)": "a[&8].b[&5].c[&3].d[&1].event_type",
+                            "@(10,seq)": "a[&8].b[&5].c[&3].d[&1].seq",
+                            "@(10,telemetry_node)": "a[&8].b[&5].c[&3].d[&1].telemetry_node",
+                            "@(10,telemetry_port)": "a[&8].b[&5].c[&3].d[&1].telemetry_port",
+                            "@(10,writer_id)": "a[&8].b[&5].c[&3].d[&1].writer_id",
+                            "@(10,serialization)": "a[&8].b[&5].c[&3].d[&1].serialization",
+                            "@(9,node_id_str)": "a[&8].b[&5].c[&3].d[&1].node_id_str",
+                            "@(9,subscription_id_str)": "a[&8].b[&5].c[&3].d[&1].subscription_id_str",
+                            "@(9,encoding_path)": "a[&8].b[&5].c[&3].d[&1].encoding_path",
+                            "@(9,collection_id)": "a[&8].b[&5].c[&3].d[&1].collection_id",
+                            "@(9,collection_start_time)": "a[&8].b[&5].c[&3].d[&1].collection_start_time",
+                            "@(9,msg_timestamp)": "a[&8].b[&5].c[&3].d[&1].msg_timestamp",
+                            "@(9,collection_end_time)": "a[&8].b[&5].c[&3].d[&1].collection_end_time",
+                            "@(7,timestamp)": "a[&8].b[&5].c[&3].d[&1].extracted_timestamp",
+                            "@(7,node-name)": "a[&8].b[&5].c[&3].d[&1].node-name",
+                            "@(7,resource)": "a[&8].b[&5].c[&3].d[&1].resource",
+                            "@(6,resource-id)": "a[&8].b[&5].c[&3].d[&1].resource-id",
+                            "@(6,num-npus)": "a[&8].b[&5].c[&3].d[&1].num-npus",
+                            "@(6,cmd-invalid)": "a[&8].b[&5].c[&3].d[&1].cmd-invalid",
+                            "@(6,asic-name)": "a[&8].b[&5].c[&3].d[&1].asic-name",
+                            "@(4,npu-id)": "a[&8].b[&5].c[&3].d[&1].npu-id",
+                            "@(4,red-oor-threshold-percent)": "a[&8].b[&5].c[&3].d[&1].red-oor-threshold-percent",
+                            "@(4,yellow-oor-threshold-percent)": "a[&8].b[&5].c[&3].d[&1].yellow-oor-threshold-percent",
+                            "@(4,num-bank)": "a[&8].b[&5].c[&3].d[&1].num-bank",
+                            "@(2,counter)": {
+                              "*": "a[&9].b[&6].c[&4].d[&2].counter_&"
+                            },
+                            "@(2,oor-state)": {
+                              "*": "a[&9].b[&6].c[&4].d[&2].oor-state_&"
+                            },
+                            "@(2,is-bank-valid)": "a[&8].b[&5].c[&3].d[&1].is-bank-valid",
+                            "@(2,bank-id)": "a[&8].b[&5].c[&3].d[&1].bank-id",
+                            "@(2,bank-name)": "a[&8].b[&5].c[&3].d[&1].bank-name",
+                            "@(2,bank-info)": "a[&8].b[&5].c[&3].d[&1].bank-info",
+                            "@(2,is-bank-info-valid)": "a[&8].b[&5].c[&3].d[&1].is-bank-info-valid",
+                            "@(2,num-lt)": "a[&8].b[&5].c[&3].d[&1].num-lt",
+                            "lt-id": "a[&8].b[&5].c[&3].d[&1].lt-id",
+                            "name": "a[&8].b[&5].c[&3].d[&1].name",
+                            "hw-entries": "a[&8].b[&5].c[&3].d[&1].hw-entries",
+                            "sw-entries": "a[&8].b[&5].c[&3].d[&1].sw-entries"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "operation": "shift",
+      "spec": {
+        "*": {
+          "*": {
+            "*": {
+              "*": {
+                "*": {
+                  "*": {
+                    "*": {
+                      "*": "[]"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

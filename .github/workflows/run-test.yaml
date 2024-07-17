@@ -1,0 +1,74 @@
+name: Run-Test
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+
+env:
+  TRANSFORMATION_REPO_PATH: cosmos-candyfloss-shared-transformations/
+  APPLICATION_DEV_CONFIG_FILE: application.dev.conf
+  APPLICATION_DEV_CONFIG_PATH: candyfloss/src/main/resources/
+  MAIN_RESOURCE_PIPELINE_PATH: candyfloss/src/main/resources/
+  MAIN_PIPELINE_FOLDER_NAME: pipeline
+  TEST_RESOURCE_DEPLOYMENT_PATH: candyfloss/src/test/resources/
+  TEST_DEPLOYMENT_FOLDER_NAME: deployment
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cosmos-candyfloss
+        uses: actions/checkout@v4
+        with:
+          repository: network-analytics/cosmos-candyfloss
+
+      - name: Checkout shared transformation
+        uses: actions/checkout@v4
+        with:
+          path: ${{ env.TRANSFORMATION_REPO_PATH }}
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+
+      - name: Display transformation pipeline and tests before merge repos
+        run: |
+          ls -latrh
+          echo "====================[ ls ${{ env.TRANSFORMATION_REPO_PATH }} ]"
+          ls ${{ env.TRANSFORMATION_REPO_PATH }}
+          echo "====================[ ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }} ]"
+          ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }}
+          echo "====================[ ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}${{ env.TEST_DEPLOYMENT_FOLDER_NAME }} ]"
+          ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}${{ env.TEST_DEPLOYMENT_FOLDER_NAME }}
+          echo "====================[ cat ${{ env.APPLICATION_DEV_CONFIG_PATH }}${{ env.APPLICATION_DEV_CONFIG_PATH }} ]"
+          cat ${{ env.APPLICATION_DEV_CONFIG_PATH }}${{ env.APPLICATION_DEV_CONFIG_FILE }}
+
+      - name: Merge transformation repo to candyfloss
+        run: |
+          ls -latrh
+          echo "====================[ Load pipelines ]"
+          rm -rf ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }}
+          cp  -r ${{ env.TRANSFORMATION_REPO_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }} ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }}
+          echo "====================[ Load test deployment ]"
+          rm -rf ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}${{ env.TEST_DEPLOYMENT_FOLDER_NAME }}
+          cp  -r ${{ env.TRANSFORMATION_REPO_PATH }}${{ env.TEST_DEPLOYMENT_FOLDER_NAME }} ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}${{ env.TEST_DEPLOYMENT_FOLDER_NAME }}
+          echo "====================[ Modify application config file ${{ env.APPLICATION_DEV_CONFIG_PATH }}${{ env.APPLICATION_DEV_CONFIG_FILE }} ]"
+          ${{ env.TRANSFORMATION_REPO_PATH}}src/generate-app-config.sh ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }} ${{ env.APPLICATION_DEV_CONFIG_PATH }}${{ env.APPLICATION_DEV_CONFIG_FILE }}
+
+      - name: Display transformation pipeline and tests after merge repos
+        run: |
+          ls -latrh
+          echo "====================[ ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }} ]"
+          ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }}
+          echo "====================[ ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}${{ env.TEST_DEPLOYMENT_FOLDER_NAME }} ]"
+          ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}${{ env.TEST_DEPLOYMENT_FOLDER_NAME }}
+          echo "====================[ cat ${{ env.APPLICATION_DEV_CONFIG_PATH }}${{ env.APPLICATION_DEV_CONFIG_PATH }} ]"
+          cat ${{ env.APPLICATION_DEV_CONFIG_PATH }}${{ env.APPLICATION_DEV_CONFIG_FILE }}
+
+      - name: Test with Gradle
+        run: ./gradlew test
