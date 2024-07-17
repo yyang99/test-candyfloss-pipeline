@@ -59,8 +59,6 @@ jobs:
       - name: Display transformation pipeline and tests after merge repos
         run: |
           ls -latrh
-          echo "====================[ ls ${{ env.TRANSFORMATION_REPO_PATH }} ]"
-          ls ${{ env.TRANSFORMATION_REPO_PATH }}
           echo "====================[ ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }} ]"
           ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }}
           echo "====================[ ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}${{ env.TEST_DEPLOYMENT_FOLDER_NAME }} ]"
