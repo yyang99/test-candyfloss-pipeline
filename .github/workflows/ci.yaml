@@ -41,8 +41,8 @@ jobs:
           ls ${{ env.APPLICATION_DEV_CONFIG_PATH}}${{ env.APPLICATION_DEV_CONFIG_FILE}}
           echo "====================[ ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }} ]"
           ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }}
-          echo "====================[ ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }} ]"
-          ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}${{ TEST_DEPLOYMENT_FOLDER_NAME }}
+          echo "====================[ ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}${{ env.TEST_DEPLOYMENT_FOLDER_NAME }} ]"
+          ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}${{ env.TEST_DEPLOYMENT_FOLDER_NAME }}
 
 #      - name: Adding test folders and file
 #        run: |
