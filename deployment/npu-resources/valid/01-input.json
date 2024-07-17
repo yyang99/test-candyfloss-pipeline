@@ -1,0 +1,188 @@
+{
+  "event_type": "log",
+  "seq": 2826155,
+  "timestamp": "1718726515.660052",
+  "telemetry_node": "172.16.18.9",
+  "telemetry_port": 56787,
+  "telemetry_data": {
+    "node_id_str": "cr02-cirith",
+    "subscription_id_str": "matterhorn-SUBSCRIPTION",
+    "encoding_path": "Cisco-IOS-XR-platforms-ofa-oper:ofa/stats/nodes/node/Cisco-IOS-XR-8000-platforms-npu-resources-oper:hw-resources-datas/hw-resources-data",
+    "collection_id": "337120",
+    "collection_start_time": "1718726515652",
+    "msg_timestamp": "1718726515658",
+    "data_json": [
+      {
+        "timestamp": "1718726515655",
+        "keys": [
+          {
+            "node-name": "0/0/CPU0"
+          },
+          {
+            "resource": "counter-bank"
+          }
+        ],
+        "content": {
+          "resource-id": 0,
+          "num-npus": 2,
+          "cmd-invalid": false,
+          "asic-name": "Q200",
+          "npu-hwr": [
+            {
+              "npu-id": 0,
+              "red-oor-threshold-percent": 0,
+              "yellow-oor-threshold-percent": 0,
+              "num-bank": 1,
+              "bank": [
+                {
+                  "is-bank-valid": true,
+                  "bank-id": 0,
+                  "bank-name": "counter_bank",
+                  "bank-info": "",
+                  "is-bank-info-valid": false,
+                  "counter": {
+                    "is-counter-valid": true,
+                    "is-max-valid": true,
+                    "max-entries": 108,
+                    "inuse-entries": 70
+                  },
+                  "oor-state": {
+                    "is-oor-valid": true,
+                    "red-oor-threshold": 95,
+                    "yellow-oor-threshold": 80,
+                    "oor-change-count": 0,
+                    "oor-state-change-time1": "N/A",
+                    "oor-state-change-time2": "N/A",
+                    "oor-state": "Green"
+                  },
+                  "num-lt": 0
+                }
+              ]
+            },
+            {
+              "npu-id": 1,
+              "red-oor-threshold-percent": 0,
+              "yellow-oor-threshold-percent": 0,
+              "num-bank": 1,
+              "bank": [
+                {
+                  "is-bank-valid": true,
+                  "bank-id": 0,
+                  "bank-name": "counter_bank",
+                  "bank-info": "",
+                  "is-bank-info-valid": false,
+                  "counter": {
+                    "is-counter-valid": true,
+                    "is-max-valid": true,
+                    "max-entries": 108,
+                    "inuse-entries": 70
+                  },
+                  "oor-state": {
+                    "is-oor-valid": true,
+                    "red-oor-threshold": 95,
+                    "yellow-oor-threshold": 80,
+                    "oor-change-count": 0,
+                    "oor-state-change-time1": "N/A",
+                    "oor-state-change-time2": "N/A",
+                    "oor-state": "Green"
+                  },
+                  "num-lt": 0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "timestamp": "1718726515655",
+        "keys": [
+          {
+            "node-name": "0/0/CPU0"
+          },
+          {
+            "resource": "l3-ac-port"
+          }
+        ],
+        "content": {
+          "resource-id": 1,
+          "num-npus": 2,
+          "cmd-invalid": false,
+          "asic-name": "Q200",
+          "npu-hwr": [
+            {
+              "npu-id": 0,
+              "red-oor-threshold-percent": 0,
+              "yellow-oor-threshold-percent": 0,
+              "num-bank": 5,
+              "bank": [
+                {
+                  "is-bank-valid": true,
+                  "bank-id": 0,
+                  "bank-name": "l3_ac_port",
+                  "bank-info": "",
+                  "is-bank-info-valid": false,
+                  "counter": {
+                    "is-counter-valid": false,
+                    "is-max-valid": false,
+                    "max-entries": 0,
+                    "inuse-entries": 0
+                  },
+                  "oor-state": {
+                    "is-oor-valid": false,
+                    "red-oor-threshold": 95,
+                    "yellow-oor-threshold": 80,
+                    "oor-change-count": 0,
+                    "oor-state-change-time1": "N/A",
+                    "oor-state-change-time2": "N/A",
+                    "oor-state": "Green"
+                  },
+                  "num-lt": 2,
+                  "lt-hwr": [
+                    {
+                      "lt-id": 47,
+                      "name": "l3if",
+                      "hw-entries": 160,
+                      "sw-entries": 0
+                    },
+                    {
+                      "lt-id": 48,
+                      "name": "l3if-48",
+                      "hw-entries": 148,
+                      "sw-entries": 48
+                    }
+                  ]
+                },
+                {
+                  "is-bank-valid": true,
+                  "bank-id": 1,
+                  "bank-name": "slice_pair_0",
+                  "bank-info": "",
+                  "is-bank-info-valid": false,
+                  "counter": {
+                    "is-counter-valid": true,
+                    "is-max-valid": true,
+                    "max-entries": 32800,
+                    "inuse-entries": 25
+                  },
+                  "oor-state": {
+                    "is-oor-valid": true,
+                    "red-oor-threshold": 95,
+                    "yellow-oor-threshold": 80,
+                    "oor-change-count": 0,
+                    "oor-state-change-time1": "N/A",
+                    "oor-state-change-time2": "N/A",
+                    "oor-state": "Green"
+                  },
+                  "num-lt": 0
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "collection_end_time": "0"
+  },
+  "serialization": "json_string",
+  "writer_id": "covematterhorn01c/1"
+}

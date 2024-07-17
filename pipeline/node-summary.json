@@ -1,0 +1,94 @@
+{
+  "match": {
+    "or": [
+      {
+        "jsonpath": "$.telemetry_data.encoding_path",
+        "value": "Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/node/summary"
+      }
+    ]
+  },
+  "transform": [
+    {
+      "operation": "shift",
+      "spec": {
+        "telemetry_data": {
+          "data_json": {
+            "*": {
+              "keys": {
+                "*": {
+                  "node-name": "a[0].b[0].c[&3].node-name"
+                }
+              },
+              "content": {
+                "@(4,event_type)": "a[0].b[0].c[&2].event_type",
+                "@(4,seq)": "a[0].b[0].c[&2].seq",
+                "@(4,timestamp)": "a[0].b[0].c[&2].timestamp",
+                "@(4,telemetry_node)": "a[0].b[0].c[&2].telemetry_node",
+                "@(4,telemetry_port)": "a[0].b[0].c[&2].telemetry_port",
+                "@(3,node_id_str)": "a[0].b[0].c[&2].node_id_str",
+                "@(3,subscription_id_str)": "a[0].b[0].c[&2].subscription_id_str",
+                "@(3,encoding_path)": "a[0].b[0].c[&2].encoding_path",
+                "@(3,collection_id)": "a[0].b[0].c[&2].collection_id",
+                "@(3,collection_start_time)": "a[0].b[0].c[&2].collection_start_time",
+                "@(3,msg_timestamp)": "a[0].b[0].c[&2].msg_timestamp",
+                "page-size": "a[0].b[0].c[&2].page-size",
+                "ram-memory": "a[0].b[0].c[&2].ram-memory",
+                "free-physical-memory": "a[0].b[0].c[&2].free-physical-memory",
+                "system-ram-memory": "a[0].b[0].c[&2].system-ram-memory",
+                "free-application-memory": "a[0].b[0].c[&2].free-application-memory",
+                "image-memory": "a[0].b[0].c[&2].image-memory",
+                "boot-ram-size": "a[0].b[0].c[&2].boot-ram-size",
+                "reserved-memory": "a[0].b[0].c[&2].reserved-memory",
+                "io-memory": "a[0].b[0].c[&2].io-memory",
+                "flash-system": "a[0].b[0].c[&2].flash-system",
+                "@(3,collection_end_time)": "a[0].b[0].c[&2].collection_end_time",
+                "@(4,serialization)": "a[0].b[0].c[&2].serialization",
+                "@(4,writer_id)": "a[0].b[0].c[&2].writer_id"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "operation": "shift",
+      "spec": {
+        "*": {
+          "*": {
+            "*": {
+              "*": {
+                "*": {
+                  "*": "[]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "operation": "modify-overwrite-beta",
+      "spec": {
+        "*": {
+          "mytimestamp": "=split('\\.',@(1,timestamp))",
+          "timestamp": "=join('',@(1,mytimestamp))"
+        }
+      }
+    },
+    {
+      "operation": "remove",
+      "spec": {
+        "*": {
+          "mytimestamp": ""
+        }
+      }
+    }
+  ],
+  "normalizeCounters": {
+    "timestamp-extractor": {
+      "jsonpath": "$.msg_timestamp",
+      "timestamp-type": "EpochMilli"
+    },
+    "counters": []
+  }
+}

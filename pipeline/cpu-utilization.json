@@ -1,0 +1,116 @@
+{
+  "match": {
+    "jsonpath": "$.telemetry_data.encoding_path",
+    "value": "Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization"
+  },
+  "transform": [
+    {
+      "operation": "modify-default-beta",
+      "spec": {
+        "telemetry_data": {
+          "data_json": {
+            "*": {
+              "content": {
+                "process-cpu": {
+                  "*": {
+                    "thread-cpu": {
+                      "[0]": {
+                        "fake": "fake"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "operation": "shift",
+      "spec": {
+        "*": "&",
+        "telemetry_data": {
+          "*": "telemetry_data.&",
+          "data_json": {
+            "*": {
+              "*": "telemetry_data.data_json.[&1].&",
+              "keys": {
+                "*": {
+                  "*": "telemetry_data.data_json.[&3].&"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "operation": "shift",
+      "spec": {
+        "telemetry_data": {
+          "data_json": {
+            "*": {
+              "content": {
+                "process-cpu": {
+                  "*": {
+                    "thread-cpu": {
+                      "*": {
+                        "@(8,event_type)": "a[&6].b[&3].c[&1].event_type",
+                        "@(8,seq)": "a[&6].b[&3].c[&1].seq",
+                        "@(8,telemetry_node)": "a[&6].b[&3].c[&1].telemetry_node",
+                        "@(8,telemetry_port)": "a[&6].b[&3].c[&1].telemetry_port",
+                        "@(8,label.nkey)": "a[&6].b[&3].c[&1].node_id",
+                        "@(8,label.pkey)": "a[&6].b[&3].c[&1].platform_id",
+                        "@(8,writer_id)": "a[&6].b[&3].c[&1].writer_id",
+                        "@(8,serialization)": "a[&6].b[&3].c[&1].serialization",
+                        "@(7,node_id_str)": "a[&6].b[&3].c[&1].node_id_str",
+                        "@(7,subscription_id_str)": "a[&6].b[&3].c[&1].subscription_id_str",
+                        "@(7,encoding_path)": "a[&6].b[&3].c[&1].encoding_path",
+                        "@(7,collection_id)": "a[&6].b[&3].c[&1].collection_id",
+                        "@(7,collection_start_time)": "a[&6].b[&3].c[&1].collection_start_time",
+                        "@(7,msg_timestamp)": "a[&6].b[&3].c[&1].msg_timestamp",
+                        "@(7,collection_end_time)": "a[&6].b[&3].c[&1].collection_end_time",
+                        "@(5,timestamp)": "a[&6].b[&3].c[&1].extracted_timestamp",
+                        "@(5,node-name)": "a[&6].b[&3].c[&1].node-name",
+                        "@(4,total-cpu-one-minute)": "a[&6].b[&3].c[&1].total-cpu-one-minute",
+                        "@(4,total-cpu-five-minute)": "a[&6].b[&3].c[&1].total-cpu-five-minute",
+                        "@(4,total-cpu-fifteen-minute)": "a[&6].b[&3].c[&1].total-cpu-fifteen-minute",
+                        "@(2,process-name)": "a[&6].b[&3].c[&1].process-name",
+                        "@(2,process-id)": "a[&6].b[&3].c[&1].process-id",
+                        "@(2,process-cpu-one-minute)": "a[&6].b[&3].c[&1].process-cpu-one-minute",
+                        "@(2,process-cpu-five-minute)": "a[&6].b[&3].c[&1].process-cpu-five-minute",
+                        "@(2,process-cpu-fifteen-minute)": "a[&6].b[&3].c[&1].process-cpu-fifteen-minute",
+                        "thread-name": "a[&6].b[&3].c[&1].thread-name",
+                        "thread-id": "a[&6].b[&3].c[&1].thread-id",
+                        "process-cpu-one-minute": "a[&6].b[&3].c[&1].thread_process-cpu-one-minute",
+                        "process-cpu-five-minute": "a[&6].b[&3].c[&1].thread_process-cpu-five-minute",
+                        "process-cpu-fifteen-minute": "a[&6].b[&3].c[&1].thread_process-cpu-fifteen-minute"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "operation": "shift",
+      "spec": {
+        "*": {
+          "*": {
+            "*": {
+              "*": {
+                "*": {
+                  "*": "[]"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

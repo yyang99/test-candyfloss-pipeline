@@ -1,0 +1,199 @@
+{
+  "event_type": "log",
+  "seq": 3100543,
+  "timestamp": "1713431643.008298",
+  "telemetry_node": "138.187.56.5",
+  "telemetry_port": 25461,
+  "label": {
+    "nkey": "ipe-zhc910-r-en-50",
+    "pkey": "Pentacon"
+  },
+  "telemetry_data": {
+    "node_id_str": "ipe-zhc910-r-en-50",
+    "subscription_id_str": "DAISY-SUBSCRIPTION",
+    "encoding_path": "Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization",
+    "collection_id": "2507491",
+    "collection_start_time": "1713431642511",
+    "msg_timestamp": "1713431643003",
+    "data_json": [
+      {
+        "timestamp": "1713431642879",
+        "keys": [
+          {
+            "node-name": "0/RSP0/CPU0"
+          }
+        ],
+        "content": {
+          "total-cpu-one-minute": 2,
+          "total-cpu-five-minute": 2,
+          "total-cpu-fifteen-minute": 2,
+          "process-cpu": [
+            {
+              "process-name": "init",
+              "process-id": 1,
+              "process-cpu-one-minute": 0,
+              "process-cpu-five-minute": 0,
+              "process-cpu-fifteen-minute": 0
+            },
+            {
+              "process-name": "kworker/3:1H",
+              "process-id": 2269,
+              "process-cpu-one-minute": 0,
+              "process-cpu-five-minute": 0,
+              "process-cpu-fifteen-minute": 0
+            },
+            {
+              "process-name": "bash",
+              "process-id": 2448,
+              "process-cpu-one-minute": 0,
+              "process-cpu-five-minute": 0,
+              "process-cpu-fifteen-minute": 0
+            },
+            {
+              "process-name": "redis-server",
+              "process-id": 2452,
+              "process-cpu-one-minute": 0,
+              "process-cpu-five-minute": 0,
+              "process-cpu-fifteen-minute": 0,
+              "thread-cpu": [
+                {
+                  "thread-name": "bio_close_file",
+                  "thread-id": 2497,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                },
+                {
+                  "thread-name": "bio_aof_fsync",
+                  "thread-id": 2498,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                },
+                {
+                  "thread-name": "bio_lazy_free",
+                  "thread-id": 2499,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                },
+                {
+                  "thread-name": "jemalloc_bg_thd",
+                  "thread-id": 2500,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                }
+              ]
+            },
+            {
+              "process-name": "beam.smp",
+              "process-id": 2473,
+              "process-cpu-one-minute": 0,
+              "process-cpu-five-minute": 0,
+              "process-cpu-fifteen-minute": 0,
+              "thread-cpu": [
+                {
+                  "thread-name": "beam.smp",
+                  "thread-id": 2640,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                },
+                {
+                  "thread-name": "beam.smp",
+                  "thread-id": 2641,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                },
+                {
+                  "thread-name": "beam.smp",
+                  "thread-id": 2642,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                },
+                {
+                  "thread-name": "beam.smp",
+                  "thread-id": 2643,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                },
+                {
+                  "thread-name": "beam.smp",
+                  "thread-id": 2644,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                },
+                {
+                  "thread-name": "beam.smp",
+                  "thread-id": 2645,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                },
+                {
+                  "thread-name": "beam.smp",
+                  "thread-id": 2646,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                },
+                {
+                  "thread-name": "beam.smp",
+                  "thread-id": 2647,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                }
+              ]
+            },
+            {
+              "process-name": "epmd",
+              "process-id": 2524,
+              "process-cpu-one-minute": 0,
+              "process-cpu-five-minute": 0,
+              "process-cpu-fifteen-minute": 0
+            },
+            {
+              "process-name": "dbus-daemon",
+              "process-id": 2584,
+              "process-cpu-one-minute": 0,
+              "process-cpu-five-minute": 0,
+              "process-cpu-fifteen-minute": 0,
+              "thread-cpu": [
+                {
+                  "thread-name": "dbus-daemon",
+                  "thread-id": 2586,
+                  "process-cpu-one-minute": 0,
+                  "process-cpu-five-minute": 0,
+                  "process-cpu-fifteen-minute": 0
+                }
+              ]
+            },
+            {
+              "process-name": "sshd",
+              "process-id": 2602,
+              "process-cpu-one-minute": 0,
+              "process-cpu-five-minute": 0,
+              "process-cpu-fifteen-minute": 0
+            },
+            {
+              "process-name": "kworker/5:1H",
+              "process-id": 30994,
+              "process-cpu-one-minute": 0,
+              "process-cpu-five-minute": 0,
+              "process-cpu-fifteen-minute": 0
+            }
+          ]
+        }
+      }
+    ],
+    "collection_end_time": "0"
+  },
+  "serialization": "json_string",
+  "writer_id": "devcolleft01pmtelemetrydtcpjsonleft01c 20240220.1.45ae420-2.el8"
+}
