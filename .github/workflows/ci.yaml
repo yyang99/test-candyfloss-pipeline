@@ -6,8 +6,10 @@ env:
   TRANSFORMATION_REPO_PATH: cosmos-candyfloss-shared-transformations
   APPLICATION_DEV_CONFIG_FILE: application.dev.conf
   APPLICATION_DEV_CONFIG_PATH: candyfloss/src/main/resources/
-  MAIN_RESOURCE_PIPELINE_PATH: candyfloss/src/main/resources/pipeline
-  TEST_RESOURCE_DEPLOYMENT_PATH: candyfloss/src/test/resources/deployment
+  MAIN_RESOURCE_PIPELINE_PATH: candyfloss/src/main/resources/
+  MAIN_PIPELINE_FOLDER_NAME: pipeline
+  TEST_RESOURCE_DEPLOYMENT_PATH: candyfloss/src/test/resources/
+  TEST_DEPLOYMENT_FOLDER_NAME: deployment
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -35,19 +37,20 @@ jobs:
           ls -latrh
           echo "====================[ ls ${{ env.TRANSFORMATION_REPO_PATH }} ]"
           ls ${{ env.TRANSFORMATION_REPO_PATH }}
-          echo "====================[ ls ${{ env.APPLICATION_DEV_CONFIG_PATH}}/${{ env.APPLICATION_DEV_CONFIG_PATH}} ]"
-          ls ${{ env.APPLICATION_DEV_CONFIG_PATH}}/${{ env.APPLICATION_DEV_CONFIG_FILE}}
-          echo "====================[ ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }} ]"
-          ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}
+          echo "====================[ ls ${{ env.APPLICATION_DEV_CONFIG_PATH}}${{ env.APPLICATION_DEV_CONFIG_PATH}} ]"
+          ls ${{ env.APPLICATION_DEV_CONFIG_PATH}}${{ env.APPLICATION_DEV_CONFIG_FILE}}
+          echo "====================[ ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }} ]"
+          ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}${{ env.MAIN_PIPELINE_FOLDER_NAME }}
           echo "====================[ ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }} ]"
-          ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}
+          ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}${{ TEST_DEPLOYMENT_FOLDER_NAME }}
 
 #      - name: Adding test folders and file
 #        run: |
 #          ls -latrh
+#          lecho "====================[ load pipelines ]"
 #          ls ${{ env.TRANSFORMATION_REPO_PATH }}
-#          rm -rf candyfloss/src/main/resources/pipeline
-#          cp  candyfloss/src/main/resources/pipeline
+#          rm -rf ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}
+#          cp  -r ${{ env.TRANSFORMATION_REPO_PATH }}/
 #          cat candyfloss/src/main/resources/application.dev.conf
 #          ls candyfloss/src/test/resources/deployment
 
