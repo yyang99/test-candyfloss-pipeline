@@ -23,5 +23,5 @@
   "boot-ram-size" : "0",
   "reserved-memory" : "0",
   "io-memory" : "0",
-  "flash-system" : "1"
+  "flash-system" : "0"
 } 
