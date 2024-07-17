@@ -21,7 +21,11 @@ jobs:
         uses: gradle/gradle-build-action@v3
 
       - name: adding test folders and file
-        run: ls -latrh
+        run: |
+          ls -latrh
+          ls candyfloss/src/main/resources/pipeline
+          cat candyfloss/src/main/resources/application.dev.conf
+          ls candyfloss/src/test/resources/deployment
 
       - name: Test with Gradle
         run: ./gradlew test
