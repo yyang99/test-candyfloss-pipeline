@@ -4,7 +4,10 @@ on: [ push ]
 
 env:
   TRANSFORMATION_REPO_PATH: cosmos-candyfloss-shared-transformations
-
+  APPLICATION_DEV_CONFIG_FILE: application.dev.conf
+  APPLICATION_DEV_CONFIG_PATH: candyfloss/src/main/resources/
+  MAIN_RESOURCE_PIPELINE_PATH: candyfloss/src/main/resources/pipeline
+  TEST_RESOURCE_DEPLOYMENT_PATH: candyfloss/src/test/resources/deployment
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,17 +32,15 @@ jobs:
 
       - name: Display transformation pipeline and tests
         run: |
-          echo "====================[ ls -latrh ]"
           ls -latrh
           echo "====================[ ls ${{ env.TRANSFORMATION_REPO_PATH }} ]"
           ls ${{ env.TRANSFORMATION_REPO_PATH }}
-          echo "====================[ cat candyfloss/src/main/resources/application.dev.conf ]"
-          cat candyfloss/src/main/resources/application.dev.conf
-          echo "====================[ cat ls candyfloss/src/main/resources/pipeline ]"
-          ls candyfloss/src/main/resources/pipeline
-          echo "====================[ ls candyfloss/src/test/resources/deployment ]"
-          ls candyfloss/src/test/resources/deployment
-          
+          echo "====================[ cat ${{ env.APPLICATION_DEV_CONFIG_PATH}}/${{ env.APPLICATION_DEV_CONFIG_PATH}} ]"
+          cat ${{ env.APPLICATION_DEV_CONFIG_PATH}}/${{ env.APPLICATION_DEV_CONFIG_PATH}}
+          echo "====================[ ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }} ]"
+          ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}
+          echo "====================[ ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }} ]"
+          ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }}
 
 #      - name: Adding test folders and file
 #        run: |
