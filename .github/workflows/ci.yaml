@@ -27,7 +27,7 @@ jobs:
       - name: adding test folders and file
         run: |
           ls -latrh
-          cat shared-transformation/Dockerfile
+          ls shared-transformation
           ls candyfloss/src/main/resources/pipeline
           cat candyfloss/src/main/resources/application.dev.conf
           ls candyfloss/src/test/resources/deployment
