@@ -6,7 +6,6 @@ if [ $# -eq 0 ]; then
 fi
 
 file_name="$1"
-
 output="  pipeline = {
 "
 for file in $(ls pipeline); do
@@ -21,6 +20,6 @@ done
   output="$output  }
 }"
 
-sed -i -e '/pipeline = {/,$d' $file_name
+sed -i -e '/^\s*pipeline = {/,$d' $file_name
 echo "$output" >> $file_name
 
