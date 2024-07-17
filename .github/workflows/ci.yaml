@@ -1,6 +1,10 @@
-name: Build
+name: Run_Tests
 
-on: [ push ]
+on:
+  push:
+  pull_request:
+    branches:
+      - main
 
 env:
   TRANSFORMATION_REPO_PATH: cosmos-candyfloss-shared-transformations/
