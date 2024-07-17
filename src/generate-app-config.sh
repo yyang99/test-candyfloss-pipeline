@@ -1,14 +1,15 @@
 #!/bin/bash
 
-if [ $# -eq 0 ]; then
-  echo "Error: Please provide a source application config file name."
+if [ $# -ne 2 ]; then
+  echo "Error: Please provide pipeline folder path and application config file name."
   exit 1
 fi
 
-file_name="$1"
+pipeline_folder="$1"
+app_file_name="$2"
 output="  pipeline = {
 "
-for file in $(ls pipeline); do
+for file in $(ls $pipeline_folder); do
   filename=$(basename "$file" .json)
   output="$output    $filename {
       output.topic.name = device-$filename-proc-json
@@ -17,9 +18,10 @@ for file in $(ls pipeline); do
   output="$output
 "
 done
-  output="$output  }
+
+output="$output  }
 }"
 
-sed -i -e '/^\s*pipeline = {/,$d' $file_name
-echo "$output" >> $file_name
+sed -i -e '/^\s*pipeline = {/,$d' $app_file_name
+echo "$output" >> $app_file_name
 
