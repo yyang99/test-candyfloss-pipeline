@@ -6,11 +6,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout sources
+      - name: Checkout cosmos-candyfloss
         uses: actions/checkout@v4
         with:
           repository: network-analytics/cosmos-candyfloss
-#          path: my-tools
+
+      - name: Checkout shared transformation
+        uses: actions/checkout@v4
+        with:
+          path: shared-transformation
 
       - uses: actions/setup-java@v4
         with:
@@ -23,6 +27,7 @@ jobs:
       - name: adding test folders and file
         run: |
           ls -latrh
+          cat Dockerfile
           ls candyfloss/src/main/resources/pipeline
           cat candyfloss/src/main/resources/application.dev.conf
           ls candyfloss/src/test/resources/deployment
