@@ -3,7 +3,7 @@ name: Build
 on: [ push ]
 
 env:
-  TRANSFORMATION_REPO_PATH: cosmos-candyfloss-shared-transformations
+  TRANSFORMATION_REPO_PATH: cosmos-candyfloss-shared-transformations/
   APPLICATION_DEV_CONFIG_FILE: application.dev.conf
   APPLICATION_DEV_CONFIG_PATH: candyfloss/src/main/resources/
   MAIN_RESOURCE_PIPELINE_PATH: candyfloss/src/main/resources/
