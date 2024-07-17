@@ -36,7 +36,7 @@ jobs:
           echo "====================[ ls ${{ env.TRANSFORMATION_REPO_PATH }} ]"
           ls ${{ env.TRANSFORMATION_REPO_PATH }}
           echo "====================[ ls ${{ env.APPLICATION_DEV_CONFIG_PATH}}/${{ env.APPLICATION_DEV_CONFIG_PATH}} ]"
-          ls ${{ env.APPLICATION_DEV_CONFIG_PATH}}/${{ env.APPLICATION_DEV_CONFIG_PATH}}
+          ls ${{ env.APPLICATION_DEV_CONFIG_PATH}}/${{ env.APPLICATION_DEV_CONFIG_FILE}}
           echo "====================[ ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }} ]"
           ls ${{ env.MAIN_RESOURCE_PIPELINE_PATH }}
           echo "====================[ ls ${{ env.TEST_RESOURCE_DEPLOYMENT_PATH }} ]"
