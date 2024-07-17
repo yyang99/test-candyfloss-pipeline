@@ -1,4 +1,4 @@
-name: Run_Tests
+name: Run-Test
 
 on:
   push:
@@ -15,7 +15,7 @@ env:
   TEST_RESOURCE_DEPLOYMENT_PATH: candyfloss/src/test/resources/
   TEST_DEPLOYMENT_FOLDER_NAME: deployment
 jobs:
-  build:
+  run-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cosmos-candyfloss
